@@ -1,0 +1,26 @@
+{
+    "name": "royfj/aliyun-php-sdk-core",
+    "type": "framework",
+    "description": "Aliyun PHP SDK Core",
+    "version": "0.1.0",
+    "homepage": "https://www.aliyun.com",
+    "authors": [
+        {
+            "name": "Li Guanghui",
+            "email": "liguanghui2006@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "files": ["src/Autoloader/Autoloader.php"]
+    },
+    
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
