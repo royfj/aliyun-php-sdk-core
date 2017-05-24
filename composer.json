@@ -1,6 +1,6 @@
 {
     "name": "royfj/aliyun-php-sdk-core",
-    "type": "framework",
+    "type": "library",
     "description": "Aliyun PHP SDK Core",
     "version": "0.1.0",
     "homepage": "https://www.aliyun.com",
