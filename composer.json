@@ -10,6 +10,7 @@
             "email": "liguanghui2006@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "php": ">=5.3"
     },
