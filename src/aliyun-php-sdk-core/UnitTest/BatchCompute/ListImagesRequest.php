@@ -17,11 +17,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-interface ISigner
+namespace UnitTest\BatchCompute\Request;
+
+class ListImagesRequest extends \RoaAcsRequest
 {
-    public function getSignatureMethod();
-    
-    public function getSignatureVersion();
-    
-    public function signString($source, $accessSecret);
+    public function __construct()
+    {
+        parent::__construct("BatchCompute", "2013-01-11", "ListImages");
+        $this->setUriPattern("/images");
+        $this->setMethod("GET");
+    }
 }

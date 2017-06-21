@@ -17,11 +17,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-interface ISigner
+include_once 'BaseTest.php';
+use UnitTest\Ecs\Request as Ecs;
+use UnitTest\BatchCompute\Request as BC;
+
+class DefaultAcsClientTest extends BaseTest
 {
-    public function getSignatureMethod();
+    public function testDoActionRPC()
+    {
+        $request = new Ecs\DescribeRegionsRequest();
+        $response = $this->client->doAction($request);
+        
+        $this->assertNotNull($response->RequestId);
+        $this->assertNotNull($response->Regions->Region[0]->LocalName);
+        $this->assertNotNull($response->Regions->Region[0]->RegionId);
+    }
     
-    public function getSignatureVersion();
-    
-    public function signString($source, $accessSecret);
+    public function testDoActionROA()
+    {
+        $request = new BC\ListImagesRequest();
+        $response = $this->client->doAction($request);
+        $this->assertNotNull($response);
+    }
 }

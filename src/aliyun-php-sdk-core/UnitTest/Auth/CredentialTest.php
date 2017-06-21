@@ -17,11 +17,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-interface ISigner
+include_once '../../Config.php';
+class CredentialTest extends PHPUnit_Framework_TestCase
 {
-    public function getSignatureMethod();
-    
-    public function getSignatureVersion();
-    
-    public function signString($source, $accessSecret);
+    public function testCredential()
+    {
+        $credential = new Credential("accessKeyId", "accessSecret");
+        $this->assertEquals("accessKeyId", $credential->getAccessKeyId());
+        $this->assertEquals("accessSecret", $credential->getAccessSecret());
+        $this->assertNotNull($credential->getRefreshDate());
+        
+        $dateNow = date("Y-m-d\TH:i:s\Z");
+        $credential->setExpiredDate(1);
+        $this->assertNotNull($credential->getExpiredDate());
+        $this->assertTrue($credential->getExpiredDate() > $dateNow);
+    }
 }

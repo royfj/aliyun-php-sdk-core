@@ -17,11 +17,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-interface ISigner
+include_once '../../Config.php';
+
+class EndpointProviderTest extends PHPUnit_Framework_TestCase
 {
-    public function getSignatureMethod();
-    
-    public function getSignatureVersion();
-    
-    public function signString($source, $accessSecret);
+    public function testFindProductDomain()
+    {
+        $this->assertEquals("ecs.aliyuncs.com", EndpointProvider::findProductDomain("cn-hangzhou", "Ecs"));
+    }
 }

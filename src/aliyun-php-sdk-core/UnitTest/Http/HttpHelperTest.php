@@ -17,11 +17,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-interface ISigner
+include_once '../BaseTest.php';
+class HttpHelperTest extends BaseTest
 {
-    public function getSignatureMethod();
-    
-    public function getSignatureVersion();
-    
-    public function signString($source, $accessSecret);
+    public function testCurl()
+    {
+        $httpResponse = HttpHelper::curl("ecs.aliyuncs.com");
+        $this->assertEquals(400, $httpResponse->getStatus());
+        $this->assertNotNull($httpResponse->getBody());
+    }
 }
